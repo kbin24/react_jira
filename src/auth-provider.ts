@@ -5,7 +5,7 @@ const apiUrl = process.env.REACT_APP_API_URL
 const localStorageKey = '__auth__provider__token'
 
 export const getToken = () =>{
-    window.localStorage.getItem(localStorageKey)
+    return window.localStorage.getItem(localStorageKey)
 }
 
 export const handleUserResponse = ({user}: {user: User}) =>{
