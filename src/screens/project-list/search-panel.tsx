@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react'
-import {Input, Select} from 'antd'
+import {Input, Select, Form} from 'antd'
 export interface User {
     id: string;
     name: string;
@@ -20,15 +20,17 @@ interface SearchPanelProps{
 
 export const SearchPanel = ({param, setParam, users}: SearchPanelProps)=>{
 
-    return <form>
-        <div>
-            <Input style={{width: 200}} type="text" value={param.name} onChange={
+    return <Form layout={'inline'} style={{marginBottom:'2rem'}}>
+        <Form.Item>
+            <Input placeholder={'项目名'} type="text" value={param.name} onChange={
                 e => setParam({
                     ...param,
                     name: e.target.value
                 })
             }/>
-            <Select style={{width: 200}} allowClear value={param.personId} onChange={value => setParam({
+        </Form.Item>
+        <Form.Item>
+            <Select placeholder={'负责人'} style={{width:'20rem'}}  allowClear value={param.personId} onChange={value => setParam({
                 ...param,
                 personId: value
             })}>
@@ -38,6 +40,6 @@ export const SearchPanel = ({param, setParam, users}: SearchPanelProps)=>{
                     })
                 }
             </Select>
-        </div>
-    </form>
+        </Form.Item>
+    </Form>
 }
