@@ -3,7 +3,7 @@ import {ProjectListScreen} from "./screens/project-list";
 import {useAuth} from "./context/auth-context";
 import styled from "@emotion/styled";
 import { Row } from "components/lib";
-import {Dropdown, Menu} from 'antd'
+import {Dropdown, Menu, Button} from 'antd'
 
 /**
  * grid 和 flex各自的应用场景
@@ -29,13 +29,13 @@ export const AuthenticatedApp = () => {
                 <Dropdown overlay={
                     <Menu>
                         <Menu.Item key={'logout'}>
-                            <a onClick={logout}>登出</a>
+                           <Button type={'link'} onClick={logout}>登出</Button>
                         </Menu.Item>
                     </Menu>
                 }>
-                    <a onClick={e => e.preventDefault()}>
+                    <Button type={'link'} onClick={e => e.preventDefault()}>
                         Hi, {user?.name}
-                    </a>
+                    </Button>
                 </Dropdown>
             </HeaderRight>
         </Header>
