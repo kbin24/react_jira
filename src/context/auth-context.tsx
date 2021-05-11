@@ -5,6 +5,8 @@ import {http} from "../utils/http";
 import {useMount} from "../utils";
 
 
+/*创建一个createContext对象，当React渲染一个订阅了这个Context对象的组件，
+这个组件会从组件树中离自身最近的那个匹配的Provider中读取当前的context的值*/
 const AuthContext = React.createContext<{
     user: User | null,
     login: (form:AuthForm) => Promise<void>,
