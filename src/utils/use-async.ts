@@ -1,6 +1,6 @@
-//定义一个泛型
 import {useState} from "react";
 
+//定义一个泛型
 interface State<D> {
     error: Error | null;
     data: D | null;
@@ -21,6 +21,7 @@ export const useAsync = <D>(initialState?: State<D>) => {
         ...initialState //用户传进来的优先级比默认值高
     })
 
+    //请求成功时 赋值并修改状态
     const setData = (data: D) => setState({
         data,
         stat: 'success',
@@ -44,8 +45,9 @@ export const useAsync = <D>(initialState?: State<D>) => {
             setData(data)
             return data
         }).catch(error => {
+            //catch会消化异常，如果不主动抛出，外面是接受不到异常的
             setError(error)
-            return error
+            return Promise.reject(error)
         })
     }
 

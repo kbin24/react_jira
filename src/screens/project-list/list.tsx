@@ -13,6 +13,7 @@ export interface Project {
     created: string
 }
 
+//继承于 TableProps 这样TableProps上的属性ListProps都有 就不用每新增一个属性就写一遍了
 interface ListProps extends TableProps<Project>{
     users: User[]
 }
@@ -21,7 +22,7 @@ interface ListProps extends TableProps<Project>{
 
 export const List = ({users, ...props}: ListProps) => {
 
-    return <Table rowKey={'id'} pagination={false} columns={[
+    return <Table rowKey={'id'} pagination={false} {...props} columns={[
         {
             title: '名称',
             dataIndex: 'name',
@@ -48,6 +49,6 @@ export const List = ({users, ...props}: ListProps) => {
                 </span>
             }
         },
-    ]}  {...props}/>
+    ]}/>
 
 }
